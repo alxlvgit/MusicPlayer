@@ -1,5 +1,6 @@
 import { platform } from "os";
 import { Album } from "./Album";
+import { IImportable } from "./interfaces";
 import { Playlist } from "./Playlist";
 import { Song } from "./Song";
 
@@ -15,7 +16,6 @@ export class User {
         this._playlists = [];
         this._albums = [];
     }
-
 
     set username(username: string) {
         if (username.length < 1) {
@@ -41,17 +41,23 @@ export class User {
     }
 
     getSongs(): void {
-        const songs: Song[] = [];
-        this._albums.forEach((album) => {
-            const albumSongs = album.tracks;
-            console.log("Your songs are:");
-            albumSongs.map((track => console.log(track)));
+        console.log("Your songs are:");
+        this._playlists.forEach((playlist) => {
+            const allSongs = playlist.songs;
+            allSongs.map((track => console.log(track.title)));
+        })
+        this._albums.forEach(album => {
+            album.tracks.map((track => console.log(track.title)));
         })
     }
 
     getAlbums(): void {
         console.log("Your albums are:");
-        this._albums.forEach(album => console.log(album.name));
+        this._playlists.forEach(playlist => {
+            const playlistTracks = playlist.songs;
+            Array.from(new Set(playlistTracks.map(track => track.album))).map(album => console.log(album));
+        }
+        );
     }
 
     getPlaylists(): void {

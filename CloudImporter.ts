@@ -16,7 +16,7 @@ export class CloudImporter implements IImportable {
         console.log(`Your playlist at location ${this._url} will be loaded`);
         let playlist = new Playlist('songs');
         const album = new Album("My new Album", new Artist("some artist"), 2022);
-        album.addTrack(new Song("some song"));
+        album.addTrack(new Song("some song", album.name));
         playlist.addAlbum(album);
         return playlist;
     }

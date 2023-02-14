@@ -7,6 +7,7 @@ export class Playlist {
 
     constructor(name: string) {
         this.name = name;
+        this._songs = [];
     }
 
     set name(name: string) {
@@ -30,7 +31,9 @@ export class Playlist {
 
     addAlbum(album: Album) {
         const albumTracks = album.tracks;
+
         albumTracks.forEach(song => {
+
             this._songs.push(song);
         });
     }

@@ -9,7 +9,7 @@ import { Song } from "./Song";
 
 let artist = new Artist("Muse");
 let album = new Album("Some album", artist, 2023);
-let song = new Song("madness");
+let song = new Song("madness", album.name);
 album.addTrack(song);
 
 let playlist = new Playlist("My songs");
@@ -23,15 +23,19 @@ let localPlaylist = localImporter.importPlaylist();
 let cloudPlaylist = cloudImporter.importPlaylist();
 let user = new User("john123", "password123");
 
-user.addPlaylist(localPlaylist);
 user.addPlaylist(cloudPlaylist);
+user.addPlaylist(localPlaylist);
+user.addPlaylist(playlist);
 
+console.log("-----------------------");
 console.log("Getting playlists...");
-console.log(user.getPlaylists());
+user.getPlaylists();
 
+console.log("-----------------------");
 console.log("Getting albums...");
-console.log(user.getAlbums());
+user.getAlbums();
 
+console.log("-----------------------");
 console.log("Getting songs...");
-console.log(user.getSongs());
+user.getSongs();
 

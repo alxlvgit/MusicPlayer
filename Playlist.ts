@@ -7,6 +7,7 @@ export class Playlist {
 
     constructor(name: string) {
         this.name = name;
+        this._songs = [];
     }
 
     set name(name: string) {
@@ -34,5 +35,4 @@ export class Playlist {
             this._songs.push(song);
         });
     }
-
 }

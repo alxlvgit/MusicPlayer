@@ -1,5 +1,4 @@
 import { IImportable } from "./interfaces";
-import { Playlist } from "./Playlist";
 
 export class PlaylistImporter {
     private _importer: IImportable;
@@ -9,8 +8,7 @@ export class PlaylistImporter {
         this._importer = importer;
     }
 
-    importPlaylist(): Playlist {
-        const playlist = this._importer.loadPlaylist();
-        return playlist;
+    importPlaylist() {
+        return this._importer.loadPlaylist();
     }
 }

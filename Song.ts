@@ -1,10 +1,8 @@
 export class Song {
     private _title!: string;
-    private _album: string;
 
-    constructor(title: string, album: string) {
+    constructor(title: string) {
         this.title = title;
-        this._album = album;
     }
 
     set title(title: string) {
@@ -17,9 +15,5 @@ export class Song {
 
     get title(): string {
         return this._title;
-    }
-
-    get album(): string {
-        return this._album;
     }
 }
